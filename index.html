@@ -84,6 +84,8 @@ footer{
     color: light-dark(darkslategray,ghostwhite);
 }</style>
             <script>
+
+//form intergration
                        $('form').each(function() { this.reset() });
 
     document.getElementById("myForm").onsubmit = function (e) {
@@ -118,6 +120,12 @@ document.getElementById("clk").innerHTML = "Loading";
 
 
     }
+
+//popup
+                        function greeting() {
+   alert("Submit button clicked!");
+   return true;
+}
 
             </script>
         </head>
@@ -186,10 +194,13 @@ document.getElementById("clk").innerHTML = "Loading";
            
         </footer>
     </div>
-    <div> cc
-               <form method="post" action="https://script.google.com/a/macros/gapps.cityu.edu.hk/s/AKfycbyCGH9ib94Qcg4UMbzNXfb4SCUxBAA6VcVnJd2l-W89529ZIosLFFroDgDrhQGTpBg/exec"> 
+    <div> pop
+               <form method="post" 
+                           action="https://script.google.com/a/macros/gapps.cityu.edu.hk/s/AKfycbyCGH9ib94Qcg4UMbzNXfb4SCUxBAA6VcVnJd2l-W89529ZIosLFFroDgDrhQGTpBg/exec"
+                           onsubmit="return greeting()"> 
                             <label for="test">Test:</label><br>
                             <input type="text" id="name" name="name"><br>
                             <input type="submit" value="Submit">
                </form>
+              
     </div>
