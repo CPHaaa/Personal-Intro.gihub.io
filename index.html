@@ -84,25 +84,41 @@ footer{
     color: light-dark(darkslategray,ghostwhite);
 }</style>
             <script>
-                        window.addEventListener("DOMContentLoaded", function() { // 'window.onload = function...' also works 
-  const yourForm = document.getElementById("yourFormID");
-  yourForm.addEventListener("submit", function(e) { // 'yourForm.onsubmit = function...` also works too
-    e.preventDefault(); 
-    const data = new FormData(yourForm); 
-    const action = e.target.action; 
-    fetch(action, { 
-      method: 'POST', 
-      body: data, 
-    }).then((response) => {
-      response.json();
-    }).then((data) => {
-      if (data.result == "success") {
-        // finished, you can do whatever you want here
-        alert("Success!")
-      }
-    })
-  })
-});
+                       $('form').each(function() { this.reset() });
+
+    document.getElementById("myForm").onsubmit = function (e) {
+        e.preventDefault();
+        submitForm();
+    };
+
+    function submitForm() {
+         document.getElementById("clk").style.display = "none";
+         document.getElementById("clk").disabled = true;
+document.getElementById("clk").innerHTML = "Loading";
+         
+        var formData = new FormData(document.getElementById("myForm"));
+        fetch('https://script.google.com/a/macros/gapps.cityu.edu.hk/s/AKfycbyCGH9ib94Qcg4UMbzNXfb4SCUxBAA6VcVnJd2l-W89529ZIosLFFroDgDrhQGTpBg/exec', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(function(response) {
+            // Handle successful form submission
+            if (response.ok) {
+                document.getElementById("clk").disabled = false;
+    document.getElementById("clk").innerHTML = "Submit";
+    window.location.href = 'index.html';
+                
+// Redirect to the home page
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+        });
+        
+
+
+    }
+
             </script>
         </head>
         <body>
@@ -170,7 +186,7 @@ footer{
            
         </footer>
     </div>
-    <div> bbb
+    <div> cc
                <form method="post" action="https://script.google.com/a/macros/gapps.cityu.edu.hk/s/AKfycbyCGH9ib94Qcg4UMbzNXfb4SCUxBAA6VcVnJd2l-W89529ZIosLFFroDgDrhQGTpBg/exec"> 
                             <label for="test">Test:</label><br>
                             <input type="text" id="name" name="name"><br>
